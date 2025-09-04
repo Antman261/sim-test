@@ -1,4 +1,4 @@
-import { makeSimTest } from '@antman/sim-env';
+import { makeSimTest } from '@antman/sim-test';
 import { expect } from '@std/expect';
 
 const withSim = makeSimTest({

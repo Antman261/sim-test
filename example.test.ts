@@ -1,5 +1,5 @@
 import { expect } from '@std/expect';
-import { makeSimTest, tryUntil } from '@antman/sim-env';
+import { makeSimTest, tryUntil } from '@antman/sim-test';
 import { delay } from '@std/async';
 
 const withSim = makeSimTest({

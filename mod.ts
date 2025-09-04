@@ -1,4 +1,7 @@
-import { makeTestFrame } from './src/harness/makeTestFrame.ts';
+import {
+  makeTestFrame,
+  type TestWrapper,
+} from './src/harness/makeTestFrame.ts';
 import { logRegex } from './src/process/initAppInstance.ts';
 import {
   SimulationTest,
@@ -31,7 +34,7 @@ export type { SimulationTestConfig };
  *   }),
  *  );
  */
-export const makeSimTest = (opt: SimulationTestConfig) => {
+export const makeSimTest = (opt: SimulationTestConfig): TestWrapper => {
   const simCtx = new SimulationTest(opt);
   return makeTestFrame({
     beforeEach: () => simCtx.start(),

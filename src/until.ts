@@ -14,8 +14,8 @@ const getDefaults = () => ({
 });
 
 export const tryUntil = async <
-  Fn extends () => Promise<unknown> | unknown,
->(fn: Fn, opts?: Opts) => {
+  T extends unknown,
+>(fn: () => T, opts?: Opts): Promise<T> => {
   const { maxAttempts, attemptIntervalMs, message } = {
     ...getDefaults(),
     ...opts,

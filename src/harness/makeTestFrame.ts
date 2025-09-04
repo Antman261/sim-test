@@ -21,7 +21,7 @@ type FrameOpt = {
   beforeAll?: FrameFunc;
   simCtx: SimulationTest;
 };
-type TestWrapper = (runTest: TestFunc) => DenoTestFunc;
+export type TestWrapper = (runTest: TestFunc) => DenoTestFunc;
 
 const makeCleaner = () => {
   const cleanups: FrameCleaner[] = [];

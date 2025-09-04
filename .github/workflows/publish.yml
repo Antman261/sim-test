@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: denoland/setup-deno@v2
-      - run: deno test
+      - run: deno test --allow-run --allow-net
       - run: deno lint
       - run: deno publish

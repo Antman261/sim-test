@@ -1,5 +1,5 @@
 {
-  "name": "@antman/sim-env",
+  "name": "@antman/sim-test",
   "version": "0.1.0",
   "exports": "./mod.ts",
   "tasks": {

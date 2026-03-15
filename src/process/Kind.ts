@@ -1,1 +1,1 @@
-export type Kind = "simulation" | "server" | "client";
+export type Kind = 'simulation' | 'app';

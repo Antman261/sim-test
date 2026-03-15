@@ -1,3 +1,16 @@
+# @antman/sim-test
+
+A deterministic simulation testing framework where the system under test is one
+or more application processes. For example,
+
+- a terminal client and a server
+- a database and an application
+- a primary database, a replica, and multiple applications handling many
+  requests
+
+## Usage
+
+```ts
 import { expect } from '@std/expect';
 import { makeSimTest, tryUntil } from '@antman/sim-test';
 import { delay } from '@std/async';
@@ -29,7 +42,6 @@ Deno.test(
   withSim(async ({ simCtx }) => {
     const [client] = simCtx.apps;
     await client.stdin.writeTextLine('/exit\n');
-    await delay(200);
     expect(
       await tryUntil(() =>
         client.stdout.readLogs().at(-1) === 'Exiting chat app'
@@ -37,3 +49,4 @@ Deno.test(
     ).toEqual(true);
   }),
 );
+```

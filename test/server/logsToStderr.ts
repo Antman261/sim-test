@@ -4,6 +4,8 @@ import { Hono } from 'hono';
 
 const { port } = parseArgs(Deno.args, { string: ['port'] });
 
+console.log(`Starting on port ${port}`);
+
 const app = new Hono();
 
 app.use(logger());

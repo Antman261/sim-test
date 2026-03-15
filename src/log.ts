@@ -1,12 +1,4 @@
-import {
-  blue,
-  brightBlue,
-  cyan,
-  green,
-  magenta,
-  red,
-  yellow,
-} from '@std/fmt/colors';
+import { blue, cyan, green, magenta, red, yellow } from '@std/fmt/colors';
 import { crypto } from '@std/crypto';
 import type { Kind } from './process/Kind.ts';
 

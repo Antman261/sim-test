@@ -1,5 +1,5 @@
 import { expect } from '@std/expect';
-import { makeSimTest, tryUntil } from '@antman/sim-test';
+import { makeSimTest, tryUntilDefined } from '@antman/sim-test';
 import { delay } from '@std/async';
 
 const withSim = makeSimTest({
@@ -31,7 +31,7 @@ Deno.test(
     await client.stdin.writeTextLine('/exit\n');
     await delay(200);
     expect(
-      await tryUntil(() =>
+      await tryUntilDefined(() =>
         client.stdout.readLogs().at(-1) === 'Exiting chat app'
       ),
     ).toEqual(true);

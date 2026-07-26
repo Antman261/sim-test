@@ -1,10 +1,10 @@
 import { expect } from '@std/expect';
-import { tryUntil, tryUntilTruthy } from './until.ts';
+import { tryUntilDefined, tryUntilTruthy } from './until.ts';
 import { delay } from '@std/async';
 
 Deno.test('tryUntil tries again on undefined', async () => {
   let i = 0;
-  const result = await tryUntil(async () => {
+  const result = await tryUntilDefined(async () => {
     i++;
     await delay(1);
     if (i < 3) return undefined;
@@ -16,7 +16,7 @@ Deno.test('tryUntil tries again on undefined', async () => {
 
 Deno.test('tryUntil succeeds on false', async () => {
   let i = 0;
-  const result = await tryUntil(async () => {
+  const result = await tryUntilDefined(async () => {
     i++;
     await delay(1);
     if (i < 3) return undefined;

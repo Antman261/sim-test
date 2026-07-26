@@ -2,14 +2,14 @@ import {
   makeTestFrame,
   type TestWrapper,
 } from './src/harness/makeTestFrame.ts';
-import { logRegex } from './src/process/index.ts';
+export { logRegex } from './src/process/index.ts';
 import {
+  type App,
   SimulationTest,
   type SimulationTestConfig,
 } from './src/SimulationTest.ts';
-import { tryUntil } from './src/until.ts';
-export { logRegex, tryUntil };
-export type { SimulationTestConfig };
+export { tryUntil, tryUntilDefined, tryUntilTruthy } from './src/until.ts';
+export type { App, SimulationTestConfig };
 
 /**
  * Define the processes required for simulation testing, then use the returned test wrapper when defining test cases.

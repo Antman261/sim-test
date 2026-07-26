@@ -55,6 +55,7 @@ type LogOptions = {
   failPattern?: RegExp;
 };
 
+/** A running process */
 export type App = {
   readonly name: string;
   readonly status: 'starting' | 'running' | 'exited';

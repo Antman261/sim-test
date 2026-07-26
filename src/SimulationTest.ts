@@ -1,7 +1,10 @@
 import { type App, type AppConfig, startAppInstance } from './process/index.ts';
 
+/** Configure the simulation test */
 export type SimulationTestConfig = {
+  /** An array of apps (processes) running as part of the test */
   apps: AppConfig[];
+  /** When set, apps will be left running at the end of the test. This can be useful for manual testing and investigation.  */
   keepTestServerOpen?: boolean;
 };
 
@@ -18,3 +21,5 @@ export class SimulationTest {
     await Promise.all(this.apps.map((svr) => svr.end()));
   }
 }
+
+export type { App };

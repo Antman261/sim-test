@@ -8,7 +8,7 @@ import {
   SimulationTest,
   type SimulationTestConfig,
 } from './src/SimulationTest.ts';
-export { tryUntil, tryUntilDefined, tryUntilTruthy } from './src/until.ts';
+export { tryUntilDefined, tryUntilTruthy } from './src/until.ts';
 export type { App, SimulationTestConfig };
 
 /**

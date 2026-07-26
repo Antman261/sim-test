@@ -115,9 +115,13 @@ export type App = {
   end(): Promise<void>;
 };
 
+/** Common regex patterns used with logPattern and failPattern */
 export const logRegex = {
+  /** Matches everything, the default logPattern on stderr & stdout */
   matchAll: /./g,
+  /** Matches nothing, the default failPattern on stdout */
   matchNothing: /[^\d\D]/g,
+  /** Matches the word error, the default failPattern on stderr */
   matchError: /error/,
 } as const;
 

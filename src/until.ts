@@ -2,8 +2,11 @@ import { delay } from '@std/async/delay';
 import { isDefined, isTruthy } from '@antman/bool';
 
 type Opts = {
+  /** The number of attempts before failing and throwing  */
   maxAttempts?: number;
+  /** Number of milliseconds to wait between attempts */
   attemptIntervalMs?: number;
+  /** This message will be included in the thrown error on failure. Useful for identifying test failures */
   message: string;
 };
 
@@ -34,6 +37,7 @@ const makeTryUntil =
     }
   };
 
-export const tryUntil: TryUntil = makeTryUntil(isDefined);
-export const tryUntilDefined: TryUntil = tryUntil;
+/** Repeatedly executes the provided function until it returns a defined value */
+export const tryUntilDefined: TryUntil = makeTryUntil(isDefined);
+/** Repeatedly executes the provided function until it returns a truthy value */
 export const tryUntilTruthy: TryUntil = makeTryUntil(isTruthy);

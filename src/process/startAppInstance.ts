@@ -156,7 +156,7 @@ export const startAppInstance = async (config: AppConfig): Promise<App> => {
   simLog(`Starting ${cfg.name} with ${cfg.appPath} ${cfg.args.join(' ')}`);
   try {
     const process = toPiped(cfg.appPath, cfg.args).spawn();
-    const log = makeLogger('app', process.pid, cfg.name);
+    const log = makeLogger(cfg.name);
     const stderrLogs: string[] = []; // TODO: Replace with ring buffer
     const stdoutLogs: string[] = []; // TODO: Replace with ring buffer
 
@@ -167,7 +167,7 @@ export const startAppInstance = async (config: AppConfig): Promise<App> => {
           .pipeThrough(new TextLineStream())
       ) {
         stderrLogs.push(logLine);
-        if (cfg.stderr?.logPattern?.test(logLine)) log(`stderr: ${logLine}`);
+        if (cfg.stderr?.logPattern?.test(logLine)) log(logLine);
         if (cfg.stderr?.failPattern?.test(logLine)) {
           failTest(`Failed on stderr: ${logLine}`);
         }
@@ -180,7 +180,7 @@ export const startAppInstance = async (config: AppConfig): Promise<App> => {
           .pipeThrough(new TextLineStream())
       ) {
         stdoutLogs.push(logLine);
-        if (cfg.stdout?.logPattern?.test(logLine)) log(`stdout: ${logLine}`);
+        if (cfg.stdout?.logPattern?.test(logLine)) log(logLine);
         if (cfg.stdout?.failPattern?.test(logLine)) {
           failTest(`stdout fail match: ${logLine}`);
         }

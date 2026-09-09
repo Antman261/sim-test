@@ -1,6 +1,5 @@
 import { blue, cyan, green, magenta, red, yellow } from '@std/fmt/colors';
 import { crypto } from '@std/crypto';
-import type { Kind } from './process/Kind.ts';
 
 type AppColor = typeof appColors[number];
 type ColorFunc = typeof blue;
@@ -20,15 +19,14 @@ const toAppColor = (name: string): ColorFunc => {
   return color;
 };
 
-export const makeLogger = (kind: Kind, id: number, name?: string) => {
-  const hasId = id !== undefined;
-  const nameWrapped = name ? `${kind}(${name})` : kind;
-  const withColor = kind === 'app' ? toAppColor(nameWrapped) : simColor;
-  const prefix = withColor(`${nameWrapped}${hasId ? `-${id}` : ''}:`);
+export const makeLogger = (name: string) => {
+  const nameWrapped = name;
+  const withColor = name === 'simulation' ? toAppColor(name) : simColor;
+  const prefix = withColor(`${nameWrapped}:`);
   return Object.assign((...args: unknown[]) => console.log(prefix, ...args), {
     error: (...args: unknown[]) =>
       console.error(prefix, red('error:'), ...args),
   });
 };
 
-export const simLog = makeLogger('simulation', Deno.pid);
+export const simLog = makeLogger('simulation');

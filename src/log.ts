@@ -19,14 +19,19 @@ const toAppColor = (name: string): ColorFunc => {
   return color;
 };
 
-export const makeLogger = (name: string) => {
+type Logger = ((...args: unknown[]) => void) & {
+  error: (...args: unknown[]) => void;
+};
+
+export const makeLogger = (name: string): Logger => {
   const nameWrapped = name;
   const withColor = name === 'simulation' ? toAppColor(name) : simColor;
   const prefix = withColor(`${nameWrapped}:`);
   return Object.assign((...args: unknown[]) => console.log(prefix, ...args), {
-    error: (...args: unknown[]) =>
-      console.error(prefix, red('error:'), ...args),
-  });
+    error: (...args: unknown[]) => {
+      console.error(prefix, red('error:'), ...args);
+    },
+  }) as Logger;
 };
 
-export const simLog = makeLogger('simulation');
+export const simLog: Logger = makeLogger('simulation');

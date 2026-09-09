@@ -10,6 +10,7 @@ import {
 } from './src/SimulationTest.ts';
 export { tryUntilDefined, tryUntilTruthy } from './src/until.ts';
 export type { App, SimulationTestConfig };
+export { simLog } from './src/log.ts';
 
 /**
  * Define the processes required for simulation testing, then use the returned test wrapper when defining test cases.
